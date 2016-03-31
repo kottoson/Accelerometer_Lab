@@ -51,32 +51,24 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * 						LED Display Characters
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Used to convert the hexadecimal value into the value
- * to be sent to the 7-segment display.
+ * Used to convert cardinal direction to bit values for
+ * output
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-#define DISPLAY_0				0x3F
-#define DISPLAY_1				0x06
-#define DISPLAY_2				0x5B
-#define DISPLAY_3				0x4F
-#define DISPLAY_4				0x66
-#define DISPLAY_5				0x6D
-#define DISPLAY_6				0x7D
-#define DISPLAY_7				0x07
-#define DISPLAY_8				0x7F
-#define DISPLAY_9				0x67
-#define DISPLAY_A				0x77
-#define DISPLAY_B				0x7c
-#define DISPLAY_C				0x39
-#define DISPLAY_D				0x5E
-#define DISPLAY_E				0x79
-#define DISPLAY_F				0x71
-
+#define NORTHEAST 	BIT6
+#define EAST 		BIT5
+#define SOUTHEAST 	BIT4
+#define SOUTH 		BIT3
+#define SOUTHWEST 	BIT2
+#define WEST		BIT1
+#define NORTHWEST	BIT0
+#define NORTH		BIT7
+#define DISPLAYX	NORTHEAST|NORTHWEST|SOUTHEAST|SOUTHWEST
+#define DISPLAYPLUS	NORTH|SOUTH|EAST|WEST
+const static unsigned char displayArr[]=	{NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST};
 void ConfigureLEDDisplayPins(void);
-void DisplayCharValues(unsigned char leftValue, unsigned char rightValue);
-void DisplayHexValue(unsigned char hexValue);
-unsigned char ConvertHexValue(unsigned char hexValue);
+void DisplayCharValue(unsigned char value);
 
 
 

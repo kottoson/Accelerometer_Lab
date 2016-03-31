@@ -6,16 +6,21 @@
  */
 #include <msp430.h>
 #include "LED.h"
+#include "timerA.h"
+#include "LEDdisplay.h"
+#include "SPI.h"
 
 // Function prototypes
 void ConfigureClockModule(void);
-void TimeDelay(unsigned int delay, unsigned int resolution);
 void main(void)
 {
 	// Stop the watchdog timer, and configure the clock module.
 	WDTCTL = WDTPW + WDTHOLD;
 	ConfigureClockModule();
-
+	ConfigureLEDDisplayPins();
+	ConfigureTimerA();
+	ConfigureSPIPins();
+	_BIS_SR(GIE);		// interrupts enabled
     // Initialize port pins associated with the LEDs, and then turn off LEDs.
     InitializeLEDPortPins();
     TURN_ON_LED1;
