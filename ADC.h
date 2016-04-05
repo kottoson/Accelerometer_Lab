@@ -8,6 +8,8 @@
 #ifndef ADC_H_
 #define ADC_H_
 
-
+void ConfigureADC(void);
+void ConfigureADCDataTransfer(char startAddress);
+void ReadSample();
 
 #endif /* ADC_H_ */
