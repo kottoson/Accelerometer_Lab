@@ -5,6 +5,7 @@
  *      Author: student
  */
 
+#include "ADC.h"
 
 void ConfigureADC(void) {
 	ADC10CTL1 = (INCH_2 | ADC10DIV_1 | ADC10SSEL_3 | CONSEQ_1);
