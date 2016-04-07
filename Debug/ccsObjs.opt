@@ -1,0 +1,1 @@
+"./ADC.obj" "./Accelerometer.obj" "./CORDIC.obj" "./LED.obj" "./LEDdisplay.obj" "./SPI.obj" "./debounce.obj" "./main.obj" "./pushbutton.obj" "./timerA.obj" "../lnk_msp430g2553.cmd" -l"libc.a" 

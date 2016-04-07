@@ -7,9 +7,28 @@
 
 #ifndef ADC_H_
 #define ADC_H_
+<<<<<<< HEAD
 #include <msp430.h>
+=======
+
+#include <msp430.h>
+
+//Prototypes
+>>>>>>> origin/master
 void ConfigureADC(void);
-void ConfigureADCDataTransfer(char startAddress);
+void ConfigureADCDataTransfer();
 void ReadSample();
+void InitializeBuffer();
+
+//Structs and Enums
+typedef struct {
+	unsigned int z, y, x;
+} sample;
+
+//Global Variables
+sample buffer[8];
+sample bufferTotal;
+sample averages;
+char bufferCount;
 
 #endif /* ADC_H_ */

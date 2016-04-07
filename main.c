@@ -6,6 +6,7 @@
  */
 #include <msp430.h>
 #include "timerA.h"
+#include "pushbutton.h"
 #include "LEDdisplay.h"
 #include "SPI.h"
 #include "ADC.h"
@@ -22,7 +23,9 @@ void main(void)
 	ConfigureClockModule();
 	ConfigureLEDDisplayPins();
 	ConfigureTimerA();
+	InitializePushButtonPortPin();
 	ConfigureSPIPins();
+<<<<<<< HEAD
 	//TODO: Configure ADC, Configure ADC transfer?
 	_BIS_SR(GIE);		// interrupts enabled
 	InitializePushButtonPortPin();
@@ -96,6 +99,13 @@ void main(void)
 	origin[2]=(zmax+zmin)<<1;
 	while(Debouncer(&gPushButton)==High);
 
+=======
+	ConfigureADC();
+
+
+	_BIS_SR(GIE);		// interrupts enabled
+    //Initialize port pins associated with the LEDs, and then turn off LEDs.
+>>>>>>> origin/master
 
 	// Infinite loop
     while(1){
