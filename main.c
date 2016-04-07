@@ -28,6 +28,9 @@ void main(void)
     TURN_OFF_LED2;
 
 	// Infinite loop
+    while(1){
+    	ManageSoftwareTimers();
+    }
 }
 
 void ConfigureClockModule(void)

@@ -67,10 +67,10 @@
 #define DISPLAYX	NORTHEAST|NORTHWEST|SOUTHEAST|SOUTHWEST
 #define DISPLAYPLUS	NORTH|SOUTH|EAST|WEST
 const static unsigned char displayArr[]=	{NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST};
+
+
+
 void ConfigureLEDDisplayPins(void);
 void DisplayCharValue(unsigned char value);
-
-
-
 
 #endif /* LEDDISPLAY_H_ */
