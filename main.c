@@ -5,7 +5,6 @@
  *      Author: student
  */
 #include <msp430.h>
-#include "LED.h" //because the LED's use P1.0, it conflicts with the accelerometer, which uses the same port.
 #include "timerA.h"
 #include "LEDdisplay.h"
 #include "SPI.h"
@@ -23,9 +22,6 @@ void main(void)
 	ConfigureSPIPins();
 	_BIS_SR(GIE);		// interrupts enabled
     //Initialize port pins associated with the LEDs, and then turn off LEDs.
-    InitializeLEDPortPins();
-    TURN_ON_LED1;
-    TURN_OFF_LED2;
 
 	// Infinite loop
     while(1){
