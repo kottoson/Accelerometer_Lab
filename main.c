@@ -6,6 +6,7 @@
  */
 #include <msp430.h>
 #include "timerA.h"
+#include "pushbutton.h"
 #include "LEDdisplay.h"
 #include "SPI.h"
 #include "ADC.h"
@@ -19,7 +20,11 @@ void main(void)
 	ConfigureClockModule();
 	ConfigureLEDDisplayPins();
 	ConfigureTimerA();
+	InitializePushButtonPortPin();
 	ConfigureSPIPins();
+	ConfigureADC();
+
+
 	_BIS_SR(GIE);		// interrupts enabled
     //Initialize port pins associated with the LEDs, and then turn off LEDs.
 

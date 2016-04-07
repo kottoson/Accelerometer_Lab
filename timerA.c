@@ -15,7 +15,7 @@ void ConfigureTimerA(void)
 	//set   USE_SMCLK   /1  COUNT_UP CLEAR_TO_START
 	TACTL |= TASSEL_2 | ID_0 | MC_1 | TACLR;
 
-	TACCR0   = 1000<<4;// .25ms at 16MHz
+	TACCR0   = 1250<<4;// .25ms at 16MHz
 	TACCTL0 |= CCIE; //Enable CC interrupts
 
 	high = NORTH;
