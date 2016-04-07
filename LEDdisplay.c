@@ -19,7 +19,7 @@ void ConfigureLEDDisplayPins(void) {
 
 //sends the char values (representing what to display) to the 7-segment display
 //left value will appear on the left display, etc.
-void DisplayCharValue(unsigned char value) {
+void DisplayLED(unsigned char value) {
 
 	SPISendByte(value);
 

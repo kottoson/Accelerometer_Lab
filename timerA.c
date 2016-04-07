@@ -7,7 +7,6 @@
 
 #include "timerA.h"
 #include "LEDdisplay.h"
-#include "LED.h"
 
 
 void ConfigureTimerA(void)
@@ -15,7 +14,7 @@ void ConfigureTimerA(void)
 	//set   USE_SMCLK   /1  COUNT_UP CLEAR_TO_START
 	TACTL |= TASSEL_2 | ID_0 | MC_1 | TACLR;
 
-	TACCR0   = 1000<<4;// .25ms at 16MHz
+	TACCR0   = 1250<<4;// 1.25ms at 16MHz
 	TACCTL0 |= CCIE; //Enable CC interrupts
 
 	high = NORTH;
@@ -30,12 +29,12 @@ void ManageSoftwareTimers(){
 	if(g1msTimeout>=MAX_VALUE)
 		g1msTimeout=0;
 	if(g1msTimeout<lowThreshold)
-		DisplayCharValue(high|mid|low);
+		DisplayLED(high|mid|low);
 	else if(g1msTimeout<midThreshold)
-		DisplayCharValue(high|mid);
+		DisplayLED(high|mid);
 	else if(g1msTimeout<highThreshold)
-		DisplayCharValue(high);
-	else DisplayCharValue(0);
+		DisplayLED(high);
+	else DisplayLED(0);
 }
 
 #pragma vector = TIMER0_A0_VECTOR
@@ -43,5 +42,6 @@ void ManageSoftwareTimers(){
 	__interrupt void TimerA0_routine(void)
 {
 		g1msTimeout++;
-		ADCInterruptFlag|=1;//TODO: Set every 10 ms?
+		g1msTimer++;
+		ADCInterruptFlag|=1;
 }

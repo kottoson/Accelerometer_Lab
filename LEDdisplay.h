@@ -71,6 +71,6 @@ const static unsigned char displayArr[]=	{NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,S
 
 
 void ConfigureLEDDisplayPins(void);
-void DisplayCharValue(unsigned char value);
+void DisplayLED(unsigned char value);
 
 #endif /* LEDDISPLAY_H_ */
