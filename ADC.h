@@ -7,14 +7,8 @@
 
 #ifndef ADC_H_
 #define ADC_H_
-<<<<<<< HEAD
 #include <msp430.h>
-=======
-
-#include <msp430.h>
-
 //Prototypes
->>>>>>> origin/master
 void ConfigureADC(void);
 void ConfigureADCDataTransfer();
 void ReadSample();

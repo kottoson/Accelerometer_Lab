@@ -11,6 +11,7 @@ main.obj: ../pushbutton.h
 main.obj: ../LEDdisplay.h
 main.obj: ../SPI.h
 main.obj: ../ADC.h
+main.obj: ../debounce.h
 
 ../main.c: 
 C:/ti/ccsv6/ccs_base/msp430/include/msp430.h: 
@@ -23,3 +24,4 @@ C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/intrinsics_legacy_undefs.
 ../LEDdisplay.h: 
 ../SPI.h: 
 ../ADC.h: 
+../debounce.h: 

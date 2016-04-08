@@ -30,9 +30,6 @@ typedef struct {
 // Function Prototypes
 void InitializeSwitch(SwitchDefine *Switch,char *SwitchPort,unsigned char SwitchBit);
 
-//This function returns the instantaneous value of the selected switch
-SwitchStatus GetSwitch(SwitchDefine *Switch);
-
 //This function debounces a switch input
 SwitchStatus Debouncer(SwitchDefine *Switch);
 

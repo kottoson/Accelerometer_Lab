@@ -38,7 +38,7 @@ void ReadSample() {
 
 void InitializeBuffer() {
 	int i;
-	for (i=8; i > 0; i--) {
+	for (i=7; i >= 0; i--) {
 		buffer[i].x = 0;
 		buffer[i].y = 0;
 		buffer[i].z = 0;

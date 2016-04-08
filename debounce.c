@@ -6,13 +6,8 @@ void InitializeSwitch(SwitchDefine *Switch,char *SwitchPort,unsigned char Switch
 {
 	Switch->CurrentState = DbExpectHigh;
 	Switch->SwitchPort = SwitchPort;
-	Switch->SwitchPortBit = SwitchBit;
+	Switch->SwitchPortBit = 0b1000;//SwitchBit;
 	Switch->TimerSnapshot = g1msTimer;
-}
-
-SwitchStatus GetSwitch(SwitchDefine *Switch)
-{
-	return Low;
 }
 
 SwitchStatus Debouncer(SwitchDefine *Switch)
@@ -20,15 +15,12 @@ SwitchStatus Debouncer(SwitchDefine *Switch)
 	SwitchStatus CurrentSwitchReading = Low;
 	DbState NextState = DbExpectHigh;
 
-	// First, determine the current inputs.
-	volatile DbState thing = Switch-> CurrentState;
-
 	// Next, based on the input values and the current state, determine the next state.
 	switch (Switch->CurrentState) {
 		case DbExpectHigh:
 			if (!(*(Switch->SwitchPort) & Switch->SwitchPortBit)) {
 				NextState = DbValidateHigh;
-				//CurrentSwitchReading = Low;
+				CurrentSwitchReading = Low;
 				Switch->TimerSnapshot = g1msTimer;
 			}
 			else {

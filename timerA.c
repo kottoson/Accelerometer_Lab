@@ -7,22 +7,13 @@
 
 #include "timerA.h"
 #include "LEDdisplay.h"
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
-
-
+#include "ADC.h"
 void ConfigureTimerA(void)
 {
 	//set   USE_SMCLK   /1  COUNT_UP CLEAR_TO_START
 	TACTL |= TASSEL_2 | ID_0 | MC_1 | TACLR;
 
-<<<<<<< HEAD
 	TACCR0   = 1250<<4;// 1.25ms at 16MHz
-=======
-	TACCR0   = 1250<<4;// .25ms at 16MHz
->>>>>>> origin/master
 	TACCTL0 |= CCIE; //Enable CC interrupts
 
 	high = NORTH;
@@ -51,5 +42,6 @@ void ManageSoftwareTimers(){
 {
 		g1msTimeout++;
 		g1msTimer++;
-		ADCInterruptFlag|=1;
+		//ADCInterruptFlag|=1;
+		ReadSample();
 }
