@@ -12,7 +12,6 @@
 #include "ADC.h"
 #include "debounce.h"
 SwitchDefine gPushButton;
-int origin[]={0,0,0};//X,Y,Z
 // Function prototypes
 void ConfigureClockModule(void);
 void main(void)
@@ -58,9 +57,9 @@ void main(void)
 		//poll value from CORDIC
 		temp=averages.x;
 		//update max
-		if(temp>xmin) xmin=temp;
+		if(temp<xmin) xmin=temp;
 	}
-	origin[0]=(xmax+xmin)<<1;
+	origin[0]=(xmax+xmin)>>1;
 	//wait for button to be not pressed
 	while(Debouncer(&gPushButton)==High);
 
@@ -77,9 +76,9 @@ void main(void)
 	while(Debouncer(&gPushButton)==High);
 	while(Debouncer(&gPushButton)==Low){
 		temp=averages.y;
-		if(temp>ymin) ymin=temp;
+		if(temp<ymin) ymin=temp;
 	}
-	origin[1]=(ymax+ymin)<<1;
+	origin[1]=(ymax+ymin)>>1;
 	while(Debouncer(&gPushButton)==High);
 
 	//Calibrate Z
@@ -94,9 +93,9 @@ void main(void)
 	while(Debouncer(&gPushButton)==High);
 	while(Debouncer(&gPushButton)==Low){
 		temp=averages.z;
-		if(temp>zmin) zmin=temp;
+		if(temp<zmin) zmin=temp;
 	}
-	origin[2]=(zmax+zmin)<<1;
+	origin[2]=(zmax+zmin)>>1;
 	while(Debouncer(&gPushButton)==High);
 
 

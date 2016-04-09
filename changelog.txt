@@ -1,0 +1,16 @@
+20160408 22:11
+================
+	*	The max and min values seemed incorrect... It seems the max and min values are being stored in registers. Hopefully this will change as those values are used more.
+	*	Created two new global "Longs" in timerA to represent theta and phi
+	*	Created an UpdateLEDs() method that changes high, mid, and low based on theta.
+	*	Test worked with theta=180 (i.e. no difference from before)
+	*	Test worked with theta=-180 degrees (south)
+	*	UpdateLEDs() works with full range of theta.
+	*	fixed a bug where the largest reading of x was going into xmin
+	*	repeated above for y and z
+	*	fixed a bug where the sum of the mins and maxes were being multiplied by two, instead of divided by two
+	*	added to "UpdateLEDs()" the CORDIC section to get theta. It makes a calculations pointer, puts the current x and y averages in it, runs CORDIC, and stores the angle in theta
+	*	forgot I needed to subract origin[i] from the averages :P Fixed
+	*	put origin in ADC b/c it doesnt do much good in main.c
+	*	It appeared that theta was either too big or too small. Now trying a greater divisor with the angle...
+	*	Realized I need to do more calculations anyways to get theta... Will compare cordic values w/ true values tomorrow and get it sorted out.

@@ -16,6 +16,7 @@
 // Prototypes
 void ConfigureTimerA(void);
 void ManageSoftwareTimers();
+void UpdateLEDs();
 // Global Variables
 
 unsigned char high;
@@ -27,6 +28,8 @@ unsigned char ADCInterruptFlag;//LSB will be set to 1 every ms
 unsigned char highThreshold;
 unsigned char midThreshold;
 unsigned char lowThreshold;
+
+long theta, phi;
 
 
 #endif /* TIMERA_H_ */

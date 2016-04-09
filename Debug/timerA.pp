@@ -9,6 +9,7 @@ timerA.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/intrinsics.h
 timerA.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/intrinsics_legacy_undefs.h
 timerA.obj: ../LEDdisplay.h
 timerA.obj: ../ADC.h
+timerA.obj: ../CORDIC.h
 
 ../timerA.c: 
 ../timerA.h: 
@@ -19,3 +20,4 @@ C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/intrinsics.h:
 C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/intrinsics_legacy_undefs.h: 
 ../LEDdisplay.h: 
 ../ADC.h: 
+../CORDIC.h: 

@@ -24,5 +24,6 @@ sample buffer[8];
 sample bufferTotal;
 sample averages;
 char bufferCount;
+int origin[3];//X,Y,Z
 
 #endif /* ADC_H_ */

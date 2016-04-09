@@ -50,4 +50,6 @@ void InitializeBuffer() {
 	bufferTotal.y = 0;
 	bufferTotal.z = 0;
 	bufferCount = 0;
+
+	int origin[]={0,0,0};//X,Y,Z
 }
