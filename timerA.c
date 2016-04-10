@@ -51,7 +51,9 @@ void UpdateLEDs() {
 	theta = cordicResults.angle;
 	phi = cordicResults.tilt;
 
-	highThreshold = (unsigned char) (phi >> 9);
+	highThreshold = (unsigned char) (phi >> 9) + 3;
+	midThreshold = (unsigned char) (phi >> 10) + 2;
+	lowThreshold = (unsigned char) (phi >> 11) + 1;
 
 	if(phi < 200) {
 		high = NORTH|SOUTH|EAST|WEST|NORTHEAST|NORTHWEST|SOUTHEAST|SOUTHWEST;
