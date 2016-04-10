@@ -14,3 +14,23 @@
 	*	put origin in ADC b/c it doesnt do much good in main.c
 	*	It appeared that theta was either too big or too small. Now trying a greater divisor with the angle...
 	*	Realized I need to do more calculations anyways to get theta... Will compare cordic values w/ true values tomorrow and get it sorted out.
+	
+20160409 14:10
+=================
+	*	Looked at the ranges for our x, y, and z values
+	*	xmax:479, xmin:440, ymax:555, ymin:506, zmax:883, zmin:836
+	*	forced CORDIC to return a 45 degree angle. It turns out the output needs to be shifted right 14 places in order to be the correct value.
+	*	Got it working w/ NE and N, but ran into an error when trying to give it NE. Will need to debug later..
+	*	Debugging note: the angle input seems to affect the angle output when calculating arctan. Be sure to set it to 0 before running CORDIC.
+	
+20160409 19:30
+=================
+	*	Debugging note 2: CORDIC was incorrect when x was negative and y was positive, but correct when x was positive and y was negative.
+	*	From this it can be assumed that x must be a positive value.
+	*	I am not getting logically-correct values from CORDIC when feeding it x=1, y=0. Trying a different version of CORDIC...
+	*	Switched over to CORDIC v.1 and it's much easier to work with. Things to be aware of:
+			-"x" and "y" for cordic are the opposite of the accelerometer output's x and y
+			-as it is, the level seems to have some systematic error, and the threshold for "level" has to be somewhere between 4 and 8 degrees.
+			
+			
+	*		

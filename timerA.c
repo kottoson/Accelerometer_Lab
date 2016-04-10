@@ -42,45 +42,54 @@ void ManageSoftwareTimers(){
 }
 
 void UpdateLEDs() {
-	calculations currentReading;
-	currentReading.x = averages.x - origin[0];
-	currentReading.y = averages.y - origin[1];
-	Cordic(&currentReading, 1);
-	theta = currentReading.angle >> 8;
+	coordinates currentReading;
+	currentReading.x = averages.y - origin[1];
+	currentReading.y = averages.x - origin[0];
+	currentReading.z = averages.z - origin[2];
+	measurements cordicResults;
+	cordicResults = getDisplaySetting(&currentReading);
+	theta = cordicResults.angle;
+	phi = cordicResults.tilt;
 
+	if(phi < 800) {
+		high = NORTH|SOUTH|EAST|WEST|NORTHEAST|NORTHWEST|SOUTHEAST|SOUTHWEST;
+		mid = 0;
+		low = 0;
+		return;
+	}
 
 	//Determine which led's light up based on the X and Y values (theta)
 	//Note that theta values used are 2x the true value (to eliminate any fp math)
 	//Values range from -90 degrees to 270 degrees for coders convenience.
-	if (theta < -135 || theta > 495) {
+	if (theta > 24750 && theta < 29250) {
 		high = SOUTH;
 		mid = SOUTHEAST | SOUTHWEST;
 		low = EAST | WEST;
-	} else if (theta > -135 && theta < -45) {
+	} else if (theta > 29250 && theta < 33750) {
 		high = SOUTHEAST;
 		mid = SOUTH | EAST;
 		low = SOUTHWEST | NORTHEAST;
-	} else if (theta > -45 && theta < 45) {
+	} else if (theta > 33750 || theta < 2250) {
 		high = EAST;
 		mid = SOUTHEAST | NORTHEAST;
 		low = SOUTH | NORTH;
-	} else if (theta > 45 && theta < 135) {
+	} else if (theta > 2250 && theta < 6750) {
 		high = NORTHEAST;
 		mid = NORTH | EAST;
 		low = NORTHWEST | SOUTHEAST;
-	} else if (theta > 135 && theta < 225) {
+	} else if (theta > 6750 && theta < 11250) {
 		high = NORTH;
 		mid = NORTHWEST | NORTHEAST;
 		low = WEST | EAST;
-	} else if (theta > 225 && theta < 315) {
+	} else if (theta > 11250 && theta < 15750) {
 		high = NORTHWEST;
 		mid = NORTH | WEST;
 		low = NORTHEAST | SOUTHWEST;
-	} else if (theta > 315 && theta < 405) {
+	} else if (theta > 15750 && theta < 20250) {
 		high = WEST;
 		mid = NORTHWEST | SOUTHWEST;
 		low = NORTH | SOUTH;
-	} else if (theta > 405 && theta < 495) {
+	} else if (theta > 20250 && theta < 24750) {
 		high = SOUTHWEST;
 		mid = SOUTH | WEST;
 		low = SOUTHEAST | NORTHWEST;
