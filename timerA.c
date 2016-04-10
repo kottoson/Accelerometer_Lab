@@ -43,18 +43,21 @@ void ManageSoftwareTimers(){
 
 void UpdateLEDs() {
 	coordinates currentReading;
-	currentReading.x = averages.y - origin[1];
-	currentReading.y = averages.x - origin[0];
-	currentReading.z = averages.z - origin[2];
+	currentReading.x = ((averages.y - origin[1]) << 2) + (averages.y - origin[1]);
+	currentReading.y = (averages.x - origin[0]) << 1;
+	currentReading.z = ((averages.z - origin[2]) << 2) + (averages.z - origin[2]);
 	measurements cordicResults;
 	cordicResults = getDisplaySetting(&currentReading);
 	theta = cordicResults.angle;
 	phi = cordicResults.tilt;
 
-	if(phi < 800) {
+	highThreshold = (unsigned char) (phi >> 9);
+
+	if(phi < 200) {
 		high = NORTH|SOUTH|EAST|WEST|NORTHEAST|NORTHWEST|SOUTHEAST|SOUTHWEST;
 		mid = 0;
 		low = 0;
+		highThreshold = MAX_VALUE + 1;
 		return;
 	}
 

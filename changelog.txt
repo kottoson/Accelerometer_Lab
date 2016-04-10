@@ -31,6 +31,11 @@
 	*	Switched over to CORDIC v.1 and it's much easier to work with. Things to be aware of:
 			-"x" and "y" for cordic are the opposite of the accelerometer output's x and y
 			-as it is, the level seems to have some systematic error, and the threshold for "level" has to be somewhere between 4 and 8 degrees.
-			
-			
+	*	Tried using the reference voltage instead of Vcc for the max voltage of the ADC (ADC.c line 13)
+	*	Can't do that... it appears that the output voltage on the Z channel exceeds 2.5V. Reverting to how it was before.
+	*	It appears that the range of values for X is 2.5 times greater than for Y and Z, so I will try adjusting for this.
+	*	Initial results are promising, so I am changing the "level" sensitivity of "level-ness" down from 8
+	*	Results are great! The level should be accurate to within 2 degrees.
+	*	Trying to adjust highThreshold based on phi. I do this by taking phi and shifting it right 9 bits to get a number between 0 and ~17
+	*	PWM for high threshold is a success! pushing to github and trying something similar with midThreshold (highThreshold/2) and lowThreshold (highThreshold / 4)
 	*		
