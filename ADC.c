@@ -8,8 +8,11 @@
 #include "ADC.h"
 
 void ConfigureADC(void) {
+	//Start from A2, divide the clock input by 2, use the master clock, and run in sequence-of-channels mode
 	ADC10CTL1 = (INCH_2 | ADC10DIV_1 | ADC10SSEL_3 | CONSEQ_1);
+	// set P1.0, P1.1, and P1.2 as analog inputs
 	ADC10AE0 |= BIT0 | BIT1 | BIT2; //Enable ADC10 A0, A1, and A2
+	// Use the default reference voltages, make the sample and hold time 64 clock cycles, enable the device and enable reading from multiple channels
 	ADC10CTL0 = (SREF_0 | ADC10SHT_3 | ADC10ON | MSC);
 }
 
